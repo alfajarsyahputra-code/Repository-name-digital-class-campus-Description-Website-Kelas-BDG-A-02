@@ -1,150 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Class Campus</title>
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
-}
-
-body{
-background:#f4f7fc;
-}
-
-.sidebar{
-position:fixed;
-left:0;
-top:0;
-width:260px;
-height:100vh;
-background:#1565c0;
-padding:20px;
-color:white;
-}
-
-.sidebar h2{
-text-align:center;
-margin-bottom:30px;
-}
-
-.sidebar ul{
-list-style:none;
-}
-
-.sidebar li{
-padding:12px;
-margin-bottom:10px;
-cursor:pointer;
-border-radius:10px;
-transition:.3s;
-}
-
-.sidebar li:hover{
-background:white;
-color:#1565c0;
-}
-
-.content{
-margin-left:280px;
-padding:20px;
-}
-
-.card-container{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-margin-top:20px;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:15px;
-box-shadow:0 3px 10px rgba(0,0,0,.1);
-flex:1;
-min-width:200px;
-}
-
-.card h1{
-color:#1565c0;
-margin-top:10px;
-}
-
-.page{
-display:none;
-}
-
-table{
-width:100%;
-background:white;
-border-collapse:collapse;
-margin-top:20px;
-box-shadow:0 3px 10px rgba(0,0,0,.1);
-}
-
-table th{
-background:#1565c0;
-color:white;
-padding:12px;
-}
-
-table td{
-padding:10px;
-border:1px solid #ddd;
-}
-
-button{
-background:#1565c0;
-color:white;
-border:none;
-padding:10px 20px;
-border-radius:10px;
-cursor:pointer;
-margin-top:15px;
-}
-
-button:hover{
-opacity:.9;
-}
-
-.notice{
-background:white;
-padding:20px;
-border-radius:15px;
-margin-top:20px;
-box-shadow:0 3px 10px rgba(0,0,0,.1);
-}
-
-@media(max-width:768px){
-
-.sidebar{
-position:relative;
-width:100%;
-height:auto;
-}
-
-.content{
-margin-left:0;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+body{background:#f4f7fc}
+#loginPage{position:fixed;inset:0;background:#1565c0;display:flex;justify-content:center;align-items:center;z-index:9999}
+.login-box{background:#fff;padding:30px;border-radius:15px;width:350px;text-align:center}
+.login-box input{width:100%;padding:12px;margin-top:10px}
+.login-box button{width:100%;padding:12px;margin-top:10px}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#1565c0;color:#fff;padding:20px}
+.sidebar li{list-style:none;padding:10px;cursor:pointer}
+.content{margin-left:270px;padding:20px}
+.page{display:none}
+.card{background:#fff;padding:20px;border-radius:12px;margin:10px 0}
+table{width:100%;border-collapse:collapse;background:#fff}
+th,td{border:1px solid #ddd;padding:8px}
+th{background:#1565c0;color:#fff}
 </style>
 </head>
 <body>
 
+<div id="loginPage">
+<div class="login-box">
+<h2>🎓 Digital Class Campus</h2>
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="pesan"></p>
+<p>admin / 12345</p>
+</div>
+</div>
+
 <div class="sidebar">
-
-<h2>🎓 Digital Class</h2>
-
+<h2>Digital Class</h2>
 <ul>
 <li onclick="showPage('dashboard')">🏠 Dashboard</li>
 <li onclick="showPage('mahasiswa')">👨‍🎓 Mahasiswa</li>
@@ -152,54 +43,22 @@ margin-left:0;
 <li onclick="showPage('jadwal')">📚 Jadwal</li>
 <li onclick="showPage('pengumuman')">📢 Pengumuman</li>
 <li onclick="showPage('tugas')">📝 Tugas</li>
-<li onclick="showPage('profil')">👤 Profil Kelas</li>
+<li onclick="showPage('profil')">👤 Profil</li>
+<li onclick="logout()">🚪 Logout</li>
 </ul>
-
 </div>
 
 <div class="content">
-
 <div id="dashboard" class="page">
-
-<h1>Dashboard Kelas BDG A 02</h1>
-
-<div class="card-container">
-
-<div class="card">
-<h3>Total Mahasiswa</h3>
-<h1>30</h1>
-</div>
-
-<div class="card">
-<h3>Mahasiswa Hadir</h3>
-<h1>30</h1>
-</div>
-
-<div class="card">
-<h3>Tugas Aktif</h3>
-<h1>2</h1>
-</div>
-
-<div class="card">
-<h3>Pengumuman</h3>
-<h1>1</h1>
-</div>
-
-</div>
-
+<h1>Dashboard BDG A 02</h1>
+<div class="card">Total Mahasiswa: 30</div>
+<div class="card">Mahasiswa Hadir: 30</div>
 </div>
 
 <div id="mahasiswa" class="page">
-
 <h1>Data Mahasiswa</h1>
-
 <table>
-<tr>
-<th>No</th>
-<th>NIM</th>
-<th>Nama Mahasiswa</th>
-</tr>
-
+<tr><th>No</th><th>NIM</th><th>Nama</th></tr>
 <tr><td>1</td><td>240161010</td><td>Alfajar Syahputra</td></tr>
 <tr><td>2</td><td>240161062</td><td>Nayla Amelia Putri</td></tr>
 <tr><td>3</td><td>240161047</td><td>Paudi Kumala</td></tr>
@@ -210,138 +69,32 @@ margin-left:0;
 <tr><td>8</td><td>240161060</td><td>Stelsania F. Silalahi</td></tr>
 <tr><td>9</td><td>240161025</td><td>Aulya Ramadhani</td></tr>
 <tr><td>10</td><td>240161030</td><td>Galih Cahya Anggraini</td></tr>
-<tr><td>11</td><td>240161028</td><td>Nazwa Alika</td></tr>
-<tr><td>12</td><td>240161032</td><td>M Ilham Fauzi</td></tr>
-<tr><td>13</td><td>240161033</td><td>Andika Pandu Ramadhan</td></tr>
-<tr><td>14</td><td>240161022</td><td>Sri Nurlisma Dewi</td></tr>
-<tr><td>15</td><td>240161021</td><td>Aiyai Br Sembiring</td></tr>
-<tr><td>16</td><td>240161001</td><td>Nurlina</td></tr>
-<tr><td>17</td><td>240161008</td><td>Fuji Amelia</td></tr>
-<tr><td>18</td><td>240161042</td><td>Faiza Aldiansyah</td></tr>
-<tr><td>19</td><td>240161064</td><td>Anggun Anggraini</td></tr>
-<tr><td>20</td><td>240161077</td><td>Dwi Aprilia Saragih</td></tr>
-<tr><td>21</td><td>240161071</td><td>Dia Lusi Sipayung</td></tr>
-<tr><td>22</td><td>240161074</td><td>Adelia Reva</td></tr>
-<tr><td>23</td><td>240161054</td><td>Tia Amanda</td></tr>
-<tr><td>24</td><td>240161057</td><td>Salsabila Az-Zahra</td></tr>
-<tr><td>25</td><td>240161065</td><td>Alina Meylani</td></tr>
-<tr><td>26</td><td>240161046</td><td>Nazwa Fadilla Putri</td></tr>
-<tr><td>27</td><td>240161044</td><td>Khairiyah Rohk Yanti Simanulang</td></tr>
-<tr><td>28</td><td>240161036</td><td>Nabila Shayka</td></tr>
-<tr><td>29</td><td>240161070</td><td>Putri Diana Sitorus</td></tr>
-<tr><td>30</td><td>240161072</td><td>Eva Suningsih Saragih</td></tr>
-
 </table>
-
 </div>
 
 <div id="absensi" class="page">
-
 <h1>Absensi</h1>
-
-<button onclick="absen()">Absen Hadir</button>
-
-<h3 id="hasil"></h3>
-
+<button onclick="document.getElementById('hasil').innerText='✅ Absensi Berhasil Disimpan'">Absen Hadir</button>
+<p id="hasil"></p>
 </div>
 
-<div id="jadwal" class="page">
-
-<h1>Jadwal Kuliah</h1>
-
-<table>
-<tr>
-<th>Hari</th>
-<th>Mata Kuliah</th>
-</tr>
-
-<tr><td>Senin</td><td>Pemrograman Web</td></tr>
-<tr><td>Selasa</td><td>Basis Data</td></tr>
-<tr><td>Rabu</td><td>Business Intelligence</td></tr>
-<tr><td>Kamis</td><td>Etika Bisnis & Profesi</td></tr>
-<tr><td>Jumat</td><td>Sistem Informasi</td></tr>
-</table>
-
-</div>
-
-<div id="pengumuman" class="page">
-
-<h1>Pengumuman</h1>
-
-<div class="notice">
-<h3>Pertemuan Selanjutnya</h3>
-<p>Mahasiswa diharapkan hadir tepat waktu dan membawa tugas yang telah diberikan.</p>
-</div>
-
-</div>
-
-<div id="tugas" class="page">
-
-<h1>Tugas Mahasiswa</h1>
-
-<table>
-<tr>
-<th>Mata Kuliah</th>
-<th>Tugas</th>
-<th>Deadline</th>
-</tr>
-
-<tr>
-<td>Etika Bisnis</td>
-<td>Makalah Etika Profesi</td>
-<td>15 Mei 2026</td>
-</tr>
-
-<tr>
-<td>Business Intelligence</td>
-<td>Presentasi Dashboard</td>
-<td>20 Mei 2026</td>
-</tr>
-
-</table>
-
-</div>
-
-<div id="profil" class="page">
-
-<h1>Profil Kelas</h1>
-
-<div class="notice">
-<p><b>Kelas:</b> BDG A 02</p>
-<p><b>Jumlah Mahasiswa:</b> 30 Orang</p>
-<p><b>Status Kehadiran:</b> 100%</p>
-<p><b>Mata Kuliah:</b> Etika Bisnis & Profesi</p>
-</div>
-
-</div>
-
+<div id="jadwal" class="page"><h1>Jadwal Kuliah</h1><div class="card">Senin - Pemrograman Web<br>Selasa - Basis Data<br>Rabu - Business Intelligence</div></div>
+<div id="pengumuman" class="page"><h1>Pengumuman</h1><div class="card">Pertemuan berikutnya hadir tepat waktu.</div></div>
+<div id="tugas" class="page"><h1>Tugas</h1><div class="card">Makalah Etika Profesi</div></div>
+<div id="profil" class="page"><h1>Profil Kelas</h1><div class="card">BDG A 02 - 30 Mahasiswa</div></div>
 </div>
 
 <script>
-
-function showPage(id){
-
-let pages=document.querySelectorAll('.page');
-
-pages.forEach(function(page){
-page.style.display='none';
-});
-
-document.getElementById(id).style.display='block';
-
+function login(){
+if(username.value==='admin'&&password.value==='12345'){
+localStorage.setItem('login','true');
+loginPage.style.display='none';
+}else pesan.innerText='Username atau Password Salah';
 }
-
-function absen(){
-
-document.getElementById('hasil').innerHTML=
-'✅ Absensi Berhasil Disimpan';
-
-}
-
+function logout(){localStorage.removeItem('login');location.reload();}
+if(localStorage.getItem('login')==='true'){window.addEventListener('load',()=>loginPage.style.display='none');}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.style.display='none');document.getElementById(id).style.display='block';}
 showPage('dashboard');
-
 </script>
-
 </body>
 </html>
-```
